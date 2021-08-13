@@ -1,4 +1,4 @@
-var hypnoticBall, database;
+var ball, database;
 var position;
 
 
@@ -7,12 +7,12 @@ function setup(){
   console.log(database);
   createCanvas(500,500);
 
-  hypnoticBall = createSprite(250,250,10,10);
-  hypnoticBall.shapeColor = "red";
+  ball = createSprite(250,250,10,10);
+  ball.shapeColor = "red";
 
 
-  var hypnoticBallPosition = database.ref('ball/position');
-  hypnoticBallPosition.on("value", readPosition, showError);
+  var ballPosition = database.ref('ball/position');
+  ballPosition.on("value", readPosition, showError);
 }
 
 function draw(){
@@ -44,8 +44,8 @@ function writePosition(x,y){
 function readPosition(data){
   position = data.val();
   console.log(position.x);
-  hypnoticBall.x = position.x;
-  hypnoticBall.y = position.y;
+  ball.x = position.x;
+  ball.y = position.y;
 }
 
 function showError(){
